@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: priceiq-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - priceiq_db:/app/data
+    env_file:
+      - .env
+    environment:
+      # Ensure sqlite is created inside the dedicated volume mapping
+      - DATABASE_URL=sqlite:///./data/pricing.db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Pass NEXT_PUBLIC_API_URL from .env to the build context
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    container_name: priceiq-frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  priceiq_db:

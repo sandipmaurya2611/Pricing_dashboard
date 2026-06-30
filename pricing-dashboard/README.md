@@ -29,9 +29,24 @@ PriceIQ doesn't just use one AI; it uses a "Multi-Agent System". Think of it as 
 
 ---
 
-## 🚀 How to Run the App on Your Computer
+## 🐳 The Easiest Way: Run with Docker
 
-Even if you aren't a programmer, you can get this running on your computer by following these step-by-step instructions.
+If you have Docker Desktop installed, you can skip the manual setup and launch the entire app with a single command!
+
+1. Open your terminal in the root folder (`PriceIQ`).
+2. Type this command:
+   ```bash
+   docker-compose up --build -d
+   ```
+3. Wait 1-2 minutes for it to build. Once finished, go to 👉 **http://localhost:3000**
+
+*(Note: Don't forget to put your `GROQ_API_KEY` inside `backend/.env` before you build it!)*
+
+---
+
+## 🚀 The Manual Way: Run on Your Computer
+
+If you don't have Docker, you can run the application manually by following these step-by-step instructions.
 
 ### Prerequisites
 Before you start, make sure you have installed:
@@ -103,6 +118,51 @@ You can log in using these demo credentials:
 3. **Run AI:** Click the **Run AI Analysis** button in the top right. 
 4. **Review:** Go to the **Recommendations** tab to see what the AI suggested!
 5. **Approve:** Click "Approve" on a recommendation, and then go to the **Audit Trail** tab to see the official record of your price change. 
+
+---
+
+## 📸 Screenshots (Admin View)
+
+Here is a glimpse of the PriceIQ dashboard running under the Admin account:
+
+### 1. Terminal Setup
+![Terminal Setup](docs/terminal-setup.png)
+
+### 2. Admin Dashboard Overview
+![Admin Overview](docs/admin-overview.png)
+
+### 3. Product Catalog
+![Product Catalog](docs/product-catalog.png)
+
+### 4. Running AI Analysis
+![Running AI Analysis](docs/analyzing-catalog.png)
+
+### 5. AI Recommendations
+![AI Recommendations](docs/ai-recommendations.png)
+
+*(Note: Please ensure the images you uploaded are saved inside the `docs/` folder with the filenames matching the links above, or update the links to point to your image locations.)*
+
+---
+
+## 📸 Screenshots (Analyst View)
+
+Here is a glimpse of the PriceIQ dashboard running under the Analyst account:
+
+### 1. Analyst Dashboard Overview
+![Analyst Overview](docs/analyst-overview.png)
+
+### 2. Recommendations
+![Analyst Recommendations](docs/analyst-recommendations.png)
+
+### 3. Audit Trail
+![Analyst Audit Trail](docs/analyst-audit-trail.png)
+
+---
+
+## 📚 Technical Documentation
+For evaluators and engineers, please see the `docs` folder for architectural and product decisions:
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [Technical Decisions](docs/DECISIONS.md)
 
 ---
 
