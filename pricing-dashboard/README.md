@@ -126,19 +126,19 @@ You can log in using these demo credentials:
 Here is a glimpse of the PriceIQ dashboard running under the Admin account:
 
 ### 1. Terminal Setup
-![Terminal Setup](docs/terminal-setup.png)
+![Terminal Setup](docs/Screenshot%202026-06-30%20100950.png)
 
 ### 2. Admin Dashboard Overview
-![Admin Overview](docs/admin-overview.png)
+![Admin Overview](docs/Screenshot%202026-06-30%20101018.png)
 
 ### 3. Product Catalog
-![Product Catalog](docs/product-catalog.png)
+![Product Catalog](docs/Screenshot%202026-06-30%20101214.png)
 
 ### 4. Running AI Analysis
-![Running AI Analysis](docs/analyzing-catalog.png)
+![Running AI Analysis](docs/Screenshot%202026-06-30%20101343.png)
 
 ### 5. AI Recommendations
-![AI Recommendations](docs/ai-recommendations.png)
+![AI Recommendations](docs/Screenshot%202026-06-30%20101403.png)
 
 *(Note: Please ensure the images you uploaded are saved inside the `docs/` folder with the filenames matching the links above, or update the links to point to your image locations.)*
 
@@ -149,13 +149,13 @@ Here is a glimpse of the PriceIQ dashboard running under the Admin account:
 Here is a glimpse of the PriceIQ dashboard running under the Analyst account:
 
 ### 1. Analyst Dashboard Overview
-![Analyst Overview](docs/analyst-overview.png)
+![Analyst Overview](docs/Screenshot%202026-06-30%20101556.png)
 
 ### 2. Recommendations
-![Analyst Recommendations](docs/analyst-recommendations.png)
+![Analyst Recommendations](docs/Screenshot%202026-06-30%20101643.png)
 
 ### 3. Audit Trail
-![Analyst Audit Trail](docs/analyst-audit-trail.png)
+![Analyst Audit Trail](docs/Screenshot%202026-06-30%20101705.png)
 
 ---
 
