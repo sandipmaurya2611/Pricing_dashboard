@@ -31,3 +31,22 @@ This document outlines the core technical and product decisions made during the 
 **Context:** LLMs hallucinate field names and data types.
 **Decision:** We force the LLM to return a strict JSON schema and run it directly through FastAPI/Pydantic validation models (`RecommendationOut`).
 **Rationale:** This ensures the frontend *never* receives malformed data, preventing UI crashes. We also implemented explicit backend error catching so that if the AI pipeline fails, a proper HTTP 500 error is passed to the UI for graceful handling.
+
+## 7. What trade-offs did you make given the 5-day timeline?
+- **Mocked Integrations:** Instead of integrating with a real Shopify, Amazon, or ERP API, we built a mock e-commerce endpoint and a complex seeding script to simulate real-world data.
+- **Database:** We utilized SQLite (via SQLAlchemy) for rapid local development rather than standing up a fully managed PostgreSQL instance.
+- **Synchronous Processing:** The AI loop currently runs synchronously within the API request. On a massive catalog, this could lead to HTTP timeouts.
+
+## 8. What would you improve with 2 more weeks?
+- **Real Integrations:** Implement OAuth connections to real e-commerce platforms (Shopify/WooCommerce) to pull live product/inventory data and execute real price changes.
+- **Background Task Queues:** Move the AI orchestration loop into an asynchronous background worker (using Celery or Redis) to prevent HTTP timeouts when analyzing hundreds of products.
+- **A/B Testing & Analytics:** Build features to track the historical conversion rates of AI-recommended prices versus human-set prices to prove ROI.
+- **Database Migration:** Migrate from SQLite to PostgreSQL for robust concurrent access and better production scale.
+
+## 9. What was the hardest part and how did you solve it?
+**The Hardest Part:** Managing LLM unreliability, specifically loops getting stuck, timeouts, and hallucinating invalid JSON structures that would crash the frontend UI.
+
+**The Solution:** 
+1. **Bounded Loops:** We wrapped the agentic loop in a strict `for _ in range(8)` loop. If the LLM doesn't reach a conclusion in 8 steps, it forcibly terminates.
+2. **Fallback Mechanisms:** If the LLM fails completely, the orchestrator triggers a hardcoded fallback that retains the current price and logs an "orchestration failure" rationale.
+3. **Pydantic Boundaries:** We enforce strict Pydantic schema validation at the API boundary. This ensures that even if the AI misbehaves, the frontend *always* receives the data structure it expects, preventing application crashes.
